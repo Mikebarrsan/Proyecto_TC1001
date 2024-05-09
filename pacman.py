@@ -20,6 +20,7 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 # fmt: off
+# Definición de laberinto, donde 0 es camino libre y 1 pared
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -45,6 +46,7 @@ tiles = [
 # fmt: on
 
 
+# dibuja el cuadrado en la posición (x, y)
 def square(x, y):
     """Draw square using path at (x, y)."""
     path.up()
@@ -59,6 +61,7 @@ def square(x, y):
     path.end_fill()
 
 
+# Calcula la posición en el laberinto
 def offset(point):
     """Return offset of point in tiles."""
     x = (floor(point.x, 20) + 200) / 20
@@ -67,6 +70,7 @@ def offset(point):
     return index
 
 
+# Verifica que esté dentro del laberinto y que no choque
 def valid(point):
     """Return True if point is valid in tiles."""
     index = offset(point)
@@ -82,6 +86,7 @@ def valid(point):
     return point.x % 20 == 0 or point.y % 20 == 0
 
 
+# Dibuja el laberinto
 def world():
     """Draw world using path."""
     turtle.bgcolor('black')
@@ -101,13 +106,14 @@ def world():
                 path.dot(2, 'white')
 
 
+# Controla el movimiento de los personjes
 def move():
     """Move pacman and all ghosts."""
     writer.undo()
     writer.write(state['score'])
 
     turtle.clear()
-
+    # Verifica siguiente posición, en caso de serlo actualiza
     if valid(pacman + aim):
         pacman.move(aim)
 
@@ -115,6 +121,7 @@ def move():
 
     if tiles[index] == 1:
         tiles[index] = 2
+        # Si pacman come un punto, aumenta su puntaje
         state['score'] += 1
         x = (index % 20) * 20 - 200
         y = 180 - (index // 20) * 20
