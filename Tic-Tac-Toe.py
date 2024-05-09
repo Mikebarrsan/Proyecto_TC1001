@@ -21,18 +21,24 @@ def grid():
     line(-200, 67, 200, 67)
 
 
-def drawx(x, y):
+def drawx(x, y):    
+    """Set starting point"""
+    x=x+16.5
+    y=y+16.5
+    
     """Draw X player."""
-    line(x, y, x + 133, y + 133)
-    line(x, y + 133, x + 133, y)
+    color('blue')
+    line(x, y, x + 100, y + 100)
+    line(x, y + 100, x + 100, y)
 
 
 def drawo(x, y):
     """Draw O player."""
+    color('red')
     up()
-    goto(x + 67, y + 5)
+    goto(x + 66.5, y + 16.5)
     down()
-    circle(62)
+    circle(50)
 
 
 def floor(value):
@@ -55,7 +61,7 @@ def tap(x, y):
     state['player'] = not player
 
 
-setup(420, 420, 370, 0)
+setup(420, 420, 371, 0)
 hideturtle()
 tracer(False)
 grid()
