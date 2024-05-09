@@ -12,6 +12,8 @@ from turtle import *
 
 from freegames import line
 
+xlist= [] #Array with x coordinates taken
+ylist= [] #Array with y coordinates taken
 
 def grid():
     """Draw tic-tac-toe grid."""
@@ -22,7 +24,7 @@ def grid():
 
 
 def drawx(x, y):    
-    """Set starting point"""
+    """Set starting point."""
     x=x+16.5
     y=y+16.5
     
@@ -51,14 +53,24 @@ players = [drawx, drawo]
 
 
 def tap(x, y):
-    """Draw X or O in tapped square."""
+    """Verify that the coordinates have not been taken."""
+    flag= False
     x = floor(x)
     y = floor(y)
-    player = state['player']
-    draw = players[player]
-    draw(x, y)
-    update()
-    state['player'] = not player
+    for i in range(len(xlist)):
+        if (x == xlist[i] and y == ylist[i]):
+            flag= True
+            break
+    
+    """Draw X or O in tapped square if you meet the above requirement."""
+    if (flag == False):
+        player = state['player']
+        draw = players[player]
+        draw(x, y)
+        update()
+        state['player'] = not player
+        xlist.append(x)
+        ylist.append(y)
 
 
 setup(420, 420, 371, 0)
