@@ -14,3 +14,11 @@ Ya hecho lo anterior, solo quedaba modificar el patrón del laberinto, cambiando
 y 1's dentro de "tiles" y modificar la velocidad de los fantamas en turtule.ontimer() a 50 ms
 para que los fantasmas fueran más rápido.
 *En el paso 2 y 3 está implícito la iplementación de flake8*
+
+Cambios realizados en Tic-Tac-Toe.py(A01027715 - Ulises Orlando Carrizalez Lerín):
+1. Modificación de colores y tamaño:
+Primero según las instrucciones del proyecto realice los cambios necesarios en la sección de dibujo de las formas, para reducir el tamaño de 133 a 100 en ambas formas. También se agregó color a las formas que se dibujaran, azul a la tache y rojo a el circulo.
+2. Agregado de funcionalidad de verificado:
+Segundo agregue la funcionalidad de verificado para que el jugador no pueda colocar dos formas en el mismo lugar, de igual manera si el jugador se equivoca el turno no avanza, por lo que no existe ningún problema si se equivoca y selecciona una opción no disponible.
+3. Integración estándar PEP8 versión inicial:
+Finalmente me asegure de cumplir con el estándar PEP8 con el uso de la herramienta de Falk8 para verificar los posibles errores como espacios o líneas vacías faltantes. 
