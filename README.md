@@ -22,3 +22,9 @@ Primero según las instrucciones del proyecto realice los cambios necesarios en 
 Segundo agregue la funcionalidad de verificado para que el jugador no pueda colocar dos formas en el mismo lugar, de igual manera si el jugador se equivoca el turno no avanza, por lo que no existe ningún problema si se equivoca y selecciona una opción no disponible.
 3. Integración estándar PEP8 versión inicial:
 Finalmente me asegure de cumplir con el estándar PEP8 con el uso de la herramienta de Falk8 para verificar los posibles errores como espacios o líneas vacías faltantes. 
+
+Cambios realizados en memory.py (A00836936 - Benjamín Iván Arauz Córdova)
+1. Agregar cantidad de taps:
+En la parte superior del tablero, se añadió una sección que muestra los "taps" (tocadas o clics) que ha realizado el usuario. Para lograr esto, implementé un contador que se incrementa cada vez que el usuario hace clic en una casilla, y este contador se muestra en pantalla.
+2. Mostrar mensaje cuando todos los cuadros se han destapado:
+Para implementar el mensaje, creé una función que verifica si todas las casillas están destapadas. Cada vez que el usuario hace clic en una casilla, se realiza un análisis para determinar si todas las casillas están destapadas y mostrar el mensaje en ese caso.
