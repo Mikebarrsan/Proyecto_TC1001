@@ -1,5 +1,5 @@
-from random import *
-from turtle import *
+import random as random
+import turtle as turtle
 
 from freegames import path
 
@@ -12,15 +12,15 @@ count_tap = 0
 
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
-    up()
-    goto(x, y)
-    down()
-    color('black', 'white')
-    begin_fill()
+    turtle.up()
+    turtle.goto(x, y)
+    turtle.down()
+    turtle.color('black', 'white')
+    turtle.begin_fill()
     for count in range(4):
-        forward(50)
-        left(90)
-    end_fill()
+        turtle.forward(50)
+        turtle.left(90)
+    turtle.end_fill()
 
 
 def index(x, y):
@@ -56,10 +56,10 @@ def tap(x, y):
 
 def draw():
     """Draw image and tiles."""
-    clear()
-    goto(0, 0)
-    shape(car)
-    stamp()
+    turtle.clear()
+    turtle.goto(0, 0)
+    turtle.shape(car)
+    turtle.stamp()
 
     for count in range(64):
         if hide[count]:
@@ -70,32 +70,35 @@ def draw():
 
     if mark is not None and hide[mark]:
         x, y = xy(mark)
-        up()
-        goto(x + 2, y)
-        color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        turtle.up()
+        turtle.goto(x + 2, y)
+        turtle.color('black')
+        turtle.write(tiles[mark], font=('Arial', 30, 'normal'))
 
-    update()
+    turtle.update()
 
     global count_tap
-    penup() 
-    goto(-200, 180)
-    color("black")
-    write(f"Taps: {count_tap}", font=('Arial', 16, 'bold'))
+
+    turtle.penup()
+    turtle.goto(-200, 180)
+    turtle.color("black")
+    turtle.write(f"Taps: {count_tap}", font=('Arial', 16, 'bold'))
 
     if all_pairs_found():
-        penup()
-        goto(-75, 180)
-        color("white")
-        write("Todos los pares fueron encontrados!", font=('Arial', 12, 'normal'))
+        message = "Todos los pares fueron encontrados!"
+        turtle.penup()
+        turtle.goto(-75, 180)
+        turtle.color("white")
+        turtle.write(message, font=('Arial', 12, 'normal'))
 
-    ontimer(draw, 100)
+    turtle.ontimer(draw, 100)
 
-shuffle(tiles)
-setup(420, 420, 370, 0)
-addshape(car)
-hideturtle()
-tracer(False)
-onscreenclick(tap)
+
+random.shuffle(tiles)
+turtle.setup(420, 420, 370, 0)
+turtle.addshape(car)
+turtle.hideturtle()
+turtle.tracer(False)
+turtle.onscreenclick(tap)
 draw()
-done()
+turtle.done()
