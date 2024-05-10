@@ -33,6 +33,11 @@ def xy(count):
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
 
+def all_pairs_found():
+    """Check if all pairs have been found."""
+    return all(not hidden for hidden in hide)
+
+
 def tap(x, y):
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
@@ -73,13 +78,18 @@ def draw():
     update()
 
     global count_tap
-    penup()
+    penup() 
     goto(-200, 180)
     color("black")
     write(f"Taps: {count_tap}", font=('Arial', 16, 'bold'))
 
-    ontimer(draw, 100)
+    if all_pairs_found():
+        penup()
+        goto(-75, 180)
+        color("white")
+        write("Todos los pares fueron encontrados!", font=('Arial', 12, 'normal'))
 
+    ontimer(draw, 100)
 
 shuffle(tiles)
 setup(420, 420, 370, 0)
